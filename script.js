@@ -2,7 +2,7 @@ function search(){
     searchContainer = document.getElementById('searchContainer')
     searchContainer.innerHTML = 'Searching...'
 
-    searchText = document.getElementById('searchBox').value 
+    searchText = document.getElementById('searchBox').value.replace('/ /g', '%20') 
     const apiUrl = `https://gutendex.com/books?search=${searchText}`
 
     fetch(apiUrl)
@@ -17,7 +17,7 @@ function search(){
         if (data.count == 0){
             searchContainer.innerHTML = 'No results found'
         }else{
-            searchContainer.innerHTML = `Found ${data.count} results`
+            searchContainer.innerHTML = ''
             addSearchResults(data)
         }
     })
@@ -36,6 +36,7 @@ function addSearchResults(data){
         temp.id = element.id
         temp.title = element.title
         temp.authors = element.authors
+        temp.languages = element.languages
 
         books.push(temp)
     })
@@ -50,7 +51,7 @@ function addSearchResults(data){
         newDiv.style.margin = '10px'
 
         newH2 = document.createElement('h2')
-        newH2.textContent = book.title
+        newH2.textContent = `${book.title} (${book.languages.join(', ')})`
         newH2.style.marginTop = '0.2rem'
 
         newP = document.createElement('p')
@@ -58,7 +59,7 @@ function addSearchResults(data){
 
         newA = document.createElement('a')
         newA.textContent = 'Read book'
-        newA.href = `/reader?book=${book.id}`
+        newA.href = `/reader.html?book=${book.id}`
 
         newDiv.append(newH2)
         newDiv.append(newP)
