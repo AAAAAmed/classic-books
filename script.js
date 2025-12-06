@@ -45,13 +45,13 @@ function addSearchResults(data){
         newDiv = document.createElement('div')
         newDiv.id = book.id
         newDiv.class = 'searchResult'
-        newDiv.style.backgroundColor = 'lightgray'
+        newDiv.style.backgroundColor = '#e3e3e3'
         newDiv.style.borderRadius = '5px'
         newDiv.style.padding = '5px'
         newDiv.style.margin = '10px'
 
         newH2 = document.createElement('h2')
-        newH2.textContent = `${book.title} (${book.languages.join(', ')})`
+        newH2.textContent = `${book.title} (${book.languages.join(', ').toUpperCase()})`
         newH2.style.marginTop = '0.2rem'
 
         newP = document.createElement('p')

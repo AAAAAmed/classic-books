@@ -1,7 +1,8 @@
-body {
-    text-align: center;
-}
+body {text-align: center}
 
-p {
-    margin: 0.2rem auto;
+p {margin: 0.2rem auto}
+
+div#searchContainer, hr {
+    max-width: 550px;
+    margin: auto;
 }
